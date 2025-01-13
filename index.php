@@ -46,8 +46,11 @@ if(isset($error)){
     <?php } else {?>
         <p>No Data Found!</p>
     <?php }?>
+    <tr>
+    <td colspan="5" style="text-align: center;">
+    <a href="create.php">Create</a>
+     </td>
+    </tr>
  </table>
- <a href="create.php">Create</a>
-
 </body>
 </html>

@@ -66,8 +66,12 @@ if (isset($_POST['submit'])){
                     <input type="submit" name="delete" value="Delete">
                 </td>
             </tr>
+            <tr>
+                <td colspan=2 style="text-align: center;">
+                <a href="index.php">Go back</a>
+                </td>
+            </tr>
         </table>
-        <a href="index.php">Go back</a>
     </form>
 </body>
 </html>

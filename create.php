@@ -30,7 +30,7 @@ if (isset($_POST['submit'])){
         <td><input type="text" name="name" placeholder="Enter Your name"></td>
         </tr>
         <tr>
-        <td>email: </td>
+        <td>Email: </td>
         <td><input type="text" name="email" placeholder="Enter Your email"></td>
         </tr>
         <tr>
@@ -44,8 +44,13 @@ if (isset($_POST['submit'])){
                     <input type="reset" value="Cancel">
                 </td>
             </tr>
+            <tr>
+                <td colspan=2 style="text-align: center;">
+                <a href="index.php">Go back</a>
+                </td>
+            </tr>
         </table>
-        <a href="index.php">Go back</a>
+        
     </form>
 </body>
 </html>
