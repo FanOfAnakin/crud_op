@@ -1,6 +1,16 @@
-<?php include 'database.php'; ?>
+<?php 
+include 'database.php';
+?>
+
 <?php
 $db = new database();
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+if ($id === 0) {
+    die("Invalid ID");
+}
+$query = "SELECT * FROM users WHERE id=$id";
+$getData = $db->select($query)->fetch_assoc();
+
 if (isset($_POST['submit'])){
     $name = mysqli_real_escape_string($db->link,$_POST['name']);
     $email = mysqli_real_escape_string($db->link,$_POST['email']);
@@ -8,10 +18,14 @@ if (isset($_POST['submit'])){
     if($name == '' || $email == '' || $phone == ''){
         $error = "Field empty!";
     } else {
-        $query = "INSERT INTO users(name,email,phone) values ('$name','$email','$phone')";
-        $create = $db->insert($query);
+        $query = "UPDATE users SET name = '$name', email = '$email', phone = '$phone' WHERE id = $id";
+        $update = $db->update($query);
     }
 }
+?>
+<?php if(isset($error)){
+    echo $error;
+}    
 ?>
 
 <!DOCTYPE html>
@@ -23,19 +37,19 @@ if (isset($_POST['submit'])){
     <title>Document</title>
 </head>
 <body>
-    <form action="create.php" method="post">
+    <form action="update.php?id=<?php echo $id;?>" method="post">
         <table>
         <tr>
         <td>Name: </td>
-        <td><input type="text" name="name" placeholder="Enter Your name"></td>
+        <td><input type="text" name="name" value="<?php echo $getData ['name']; ?>"></td>
         </tr>
         <tr>
         <td>email: </td>
-        <td><input type="text" name="email" placeholder="Enter Your email"></td>
+        <td><input type="text" name="email" value="<?php echo $getData['email']; ?>"></td>
         </tr>
         <tr>
         <td>Phone: </td>
-        <td><input type="text" name="phone" placeholder="Enter Your Number"></td>    
+        <td><input type="text" name="phone" value="<?php echo $getData['phone']; ?>"></td>    
         </tr>    
             <tr>
                 <td></td>

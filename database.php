@@ -24,7 +24,6 @@ private function connectDb(){
 
 public function select($query){
     $result  = $this->link->query($query) or die ($this->link->error . __LINE__);
-
     if($result->num_rows > 0){
         return $result;
     }else{
@@ -32,14 +31,23 @@ public function select($query){
     }
 }
 
-public function insert($insert_query){
-    $insert_row = $this->link->query($insert_query) or die ($this->link->error . __LINE__);
+public function insert($query){
+    $insert_row = $this->link->query($query) or die ($this->link->error . __LINE__);
     if($insert_row){
         header("Location: index.php?msg=".urlencode('Data Inserted Successfully!'));
     } else {
         die("Insertion failed!");
     }
 
+}
+
+public function update($query){
+    $update_row = $this->link->query($query) or die($this->link->error . __LINE__);
+    if($update_row){
+        header("Location: index.php?msg=".urlencode('Data Updated Successfully!'));
+    } else{
+        die("Update Failed!");
+    }
 }
 
 }
