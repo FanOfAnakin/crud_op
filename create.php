@@ -1,9 +1,16 @@
 <?php include 'database.php'?>
 <?php
 $db = new database();
-$if (isset($_POST['submit'])){
-    356
-
+if (isset($_POST['submit'])){
+    $name = mysqli_real_escape_string($db->link,$_POST['name']);
+    $email = mysqli_real_escape_string($db->link,$_POST['email']);
+    $phone = mysqli_real_escape_string($db->link,$_POST['phone']);
+    if($name == '' || $email == '' || $phone == ''){
+        $error = "Field empty!";
+    } else {
+        $insert_query = "INSERT INTO users(name,email,phone) values ('$name','$email','$phone')";
+        $create = $db->insert($insert_query);
+    }
 }
 ?>
 
@@ -28,7 +35,7 @@ $if (isset($_POST['submit'])){
         </tr>
         <tr>
         <td>Phone: </td>
-        <td><input type="text" name="Phone" placeholder="Enter Your Number"></td>    
+        <td><input type="text" name="phone" placeholder="Enter Your Number"></td>    
         </tr>    
             <tr>
                 <td></td>

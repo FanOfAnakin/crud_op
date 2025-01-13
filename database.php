@@ -32,4 +32,14 @@ public function select($query){
     }
 }
 
+public function insert($insert_query){
+    $insert_row = $this->link->query($insert_query) or die ($this->link->error . __LINE__);
+    if($insert_row){
+        header("Location: index.php?msg=".urlencode('Data Inserted Successfully!'));
+    } else {
+        die("Insertion failed!");
+    }
+
+}
+
 }

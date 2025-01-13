@@ -7,6 +7,11 @@ $db = new database();
 $query = "SELECT * FROM users";
 $read = $db->select($query);
 ?>
+<?php
+if(isset($error)){
+    echo $error;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
