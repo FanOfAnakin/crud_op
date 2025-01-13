@@ -24,14 +24,19 @@ if(isset($error)){
 <body>
  <table >
     <tr>
-        <th width=25%>Name</th>
-        <th width=25%>Email</th>
-        <th width=25%>Phone</th>
-        <th width=25%>Action</th>
+        <th >Serial No.</th>
+        <th >Name</th>
+        <th >Email</th>
+        <th >Phone</th>
+        <th >Action</th>
     </tr>
     <?php if($read) {?>
-        <?php while($row = $read -> fetch_assoc()) {?>
+        
+        <?php
+        $i = 1;
+        while($row = $read -> fetch_assoc()) {?>
     <tr>
+        <td><?php echo $i++ ?></td>
         <td><?php echo $row ['name']?></td>
         <td><?php echo $row ['email']?></td>
         <td><?php echo $row ['phone']?></td>

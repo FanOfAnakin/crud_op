@@ -28,6 +28,13 @@ if (isset($_POST['submit'])){
 }    
 ?>
 
+<?php 
+    if(isset($_POST['delete'])){
+        $query = "DELETE FROM users WHERE id = $id";
+        $deleteData = $db->delete($query);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <link rel="stylesheet" href="style.css">
@@ -56,6 +63,7 @@ if (isset($_POST['submit'])){
                 <td>
                     <input type="submit" name="submit" value="Submit">
                     <input type="reset" value="Cancel">
+                    <input type="submit" name="delete" value="Delete">
                 </td>
             </tr>
         </table>
